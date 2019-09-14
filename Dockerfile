@@ -7,21 +7,8 @@ RUN apk update && apk upgrade && \
 RUN apk add bash
 RUN apk add pcre-dev 
 RUN pip install --upgrade pip
-RUN pip install flask
-RUN	pip install flasgger
 
-ENV PYTHON_PACKAGES="\
-	pytest \
-	click \
-	nltk \
-	unidecode \
-	python-pcre \
- 	pandas \
-	segtok \
-	werkzeug \
-"
-
-RUN	pip install --no-cache-dir $PYTHON_PACKAGES 
+RUN pip install -r requirements.txt 
 RUN pip install git+https://github.com/LIAAD/py-pampo.git
 RUN pip install gunicorn
 
